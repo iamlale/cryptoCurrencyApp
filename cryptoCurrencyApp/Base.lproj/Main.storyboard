@@ -1,24 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WvI-mC-I9k">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="OHr-Gx-wPR">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="WvI-mC-I9k" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ASy-vQ-S9X">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xaC-yg-Y0W" kind="relationship" relationship="rootViewController" id="sSU-8u-rgB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgF-xQ-Bjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1013" y="-362"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="FGQ-if-AnS">
+            <objects>
+                <viewController id="xaC-yg-Y0W" customClass="ViewController" customModule="KriptoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MgT-oZ-duy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ygc-Hg-CJn">
+                                <rect key="frame" x="15" y="149.33333333333331" width="363" height="668.66666666666674"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Y5t-tm-vC9">
+                                    <size key="itemSize" width="341" height="86"/>
+                                    <size key="estimatedItemSize" width="341" height="136"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoinCell" id="s1h-zx-tkk" customClass="CoinListCollectionViewCell" customModule="KriptoApp" customModuleProvider="target">
+                                        <rect key="frame" x="11" y="0.0" width="341" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yv0-gP-FzL">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="86"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="341" height="86"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="xaC-yg-Y0W" id="eG3-Bd-81s"/>
+                                    <outlet property="delegate" destination="xaC-yg-Y0W" id="Zjj-kD-XNS"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" text=" Ranking List" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-wq-Qbu">
+                                <rect key="frame" x="16" y="103" width="169" height="27"/>
+                                <color key="tintColor" red="0.40784313729999999" green="0.4039215686" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.98348611590000001" green="0.18510162829999999" blue="0.77846473459999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-4G-oag">
+                                <rect key="frame" x="313" y="103" width="65" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="tintColor" red="0.070588238540000001" green="0.19607841970000001" blue="0.38431376220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sort" image="list.triangle" catalog="system">
+                                    <color key="titleColor" red="0.99438351390000002" green="0.1937370598" blue="0.76710802320000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="filterCoins:" destination="xaC-yg-Y0W" eventType="touchUpInside" id="k8o-Bn-DkB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZyI-0A-jGI"/>
+                        <color key="backgroundColor" red="0.001694582985" green="0.0037454355039999998" blue="0.12749499080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ygc-Hg-CJn" firstAttribute="leading" secondItem="ZyI-0A-jGI" secondAttribute="leading" constant="15" id="EVA-Sk-4iV"/>
+                            <constraint firstItem="ygc-Hg-CJn" firstAttribute="bottom" secondItem="ZyI-0A-jGI" secondAttribute="bottom" id="IBp-Rw-U81"/>
+                            <constraint firstItem="wfU-4G-oag" firstAttribute="centerY" secondItem="3O5-wq-Qbu" secondAttribute="centerY" id="Nnn-q6-KT7"/>
+                            <constraint firstItem="ZyI-0A-jGI" firstAttribute="trailing" secondItem="ygc-Hg-CJn" secondAttribute="trailing" constant="15" id="PY8-bT-SrO"/>
+                            <constraint firstItem="wfU-4G-oag" firstAttribute="leading" secondItem="3O5-wq-Qbu" secondAttribute="trailing" constant="135" id="QvC-JI-oaO"/>
+                            <constraint firstItem="3O5-wq-Qbu" firstAttribute="leading" secondItem="ZyI-0A-jGI" secondAttribute="leading" constant="25" id="hWv-0w-DeZ"/>
+                            <constraint firstItem="3O5-wq-Qbu" firstAttribute="top" secondItem="ZyI-0A-jGI" secondAttribute="top" constant="5" id="kJ1-nO-Xgf"/>
+                            <constraint firstItem="ygc-Hg-CJn" firstAttribute="top" secondItem="wfU-4G-oag" secondAttribute="bottom" constant="15" id="sfN-yV-ha0"/>
+                            <constraint firstItem="ZyI-0A-jGI" firstAttribute="trailing" secondItem="wfU-4G-oag" secondAttribute="trailing" constant="15" id="w9M-L8-RP6"/>
+                            <constraint firstItem="wfU-4G-oag" firstAttribute="top" secondItem="ZyI-0A-jGI" secondAttribute="top" constant="5" id="yF5-h1-5tr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yuv-Iq-2cY"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ygc-Hg-CJn" id="03W-n8-rmJ"/>
+                        <outlet property="filterButton" destination="wfU-4G-oag" id="nNj-TK-oJV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lue-74-AU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1754.9618320610687" y="-363.38028169014086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list.triangle" catalog="system" width="128" height="91"/>
+    </resources>
 </document>
