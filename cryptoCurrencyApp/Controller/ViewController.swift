@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func filterCoins(_ sender: Any) {
+        self.coinList.sort{ $0.price < $1.price }
+        self.collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         coinRequest.getCoins{ result in
@@ -37,13 +42,14 @@ class ViewController: UIViewController {
         
         filterButton.showsMenuAsPrimaryAction = true
         
-        collectionView.register(UINib(nibName: "CoinListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CoinCell")
+        collectionView.register(UINib(nibName: "CoinListCVCell", bundle: nil), forCellWithReuseIdentifier: "CoinCell")
         
         filterButton.menu = UIMenu(children: [
             
             UIAction(title: "Price") { action in
                 self.coinList.sort{ $0.price < $1.price }
-                self.collectionView.reloadData()                    },
+                self.collectionView.reloadData()
+            },
             
             UIAction(title: "MarketCap") { action in
                 self.coinList.sort{ $0.marketCap < $1.marketCap }
@@ -68,11 +74,39 @@ class ViewController: UIViewController {
         ])
     }
     
-    @IBAction func filterCoins(_ sender: Any) {
-        self.coinList.sort{ $0.price < $1.price }
-        self.collectionView.reloadData()
+  
+    
+}
+
+extension ViewController : UICollectionViewDelegate , UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return coinList.count
     }
-       
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinCell", for: indexPath) as! CoinListCVCell
+        cell.layer.cornerRadius = 10
+        cell.backgroundColor = UIColor(red: 5/255.0, green: 33/255.0, blue: 114/255.0, alpha: 1.0)
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.masksToBounds = true
+        cell.configure(model: coinList[indexPath.row])
+        
+        if cell.changeLabel.text?.first == "-"{
+            cell.changeLabel.textColor = .red
+        }
+        else{
+            cell.changeLabel.textColor = .green
+        }
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        CoinDetailViewController.coinDetails = coinList[indexPath.row]
+        self.performSegue(withIdentifier: "coinDetail", sender: self)
+    }
+    
     
 }
 
